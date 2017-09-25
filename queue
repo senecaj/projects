@@ -1,0 +1,67 @@
+#include <iostream>
+#include <string>
+
+struct node
+{
+
+     string data;
+     node *next;
+     node(string x){data = x; next = NULL;}
+
+};
+//start of queue
+ class Queue
+ {
+      private:
+      //node *rear;
+      node *front;
+      
+      public:
+      Queue(){front = NULL;}
+      
+      void insert(string word);
+      void remove();
+      void display();
+ };
+ void Queue::display()
+ {
+      node *ptr1=front;
+	  cout << " This queue is ";
+	  while(ptr1 != NULL)
+	  {
+	    cout << ptr1->data << " ";
+	    ptr1 = ptr1->next;
+          }
+	  cout << "NULL" << endl;
+ }
+ void Queue::insert(string word)
+ {
+     node *ptr;
+     ptr = front;
+     node *Node = new node(word);
+     if(front == NULL)
+     {
+          front = Node;
+          return;
+     }
+     while(ptr -> next != NULL)
+     {
+          ptr = ptr->next;
+     }
+     ptr->next = Node;
+ }
+
+ void Queue::remove()
+ {
+      
+      if(front == NULL)
+         return;
+      node* temp = front->next;
+      delete front;
+      front = temp;
+ }
+
+
+
+
+// end of queue
