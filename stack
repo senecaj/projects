@@ -1,0 +1,68 @@
+
+
+struct Node
+{
+
+     string data;
+     Node *next;
+     Node(string x){data = x; next = NULL;}
+
+};
+//create a class for the stack
+
+	class Stack
+	{
+	  Node* node;
+	  public:
+	  Stack() //this will serve as the constructor
+	  {
+	     node = NULL;
+	  }
+	  void push(string data);
+	  void pop();
+	  void show();
+        };
+
+// the operation push
+	
+	void Stack::push(string data)
+	{
+	  Node *temp = new Node(data);
+	  if( node == NULL)
+	  {
+	    node = temp;
+	    return;
+          }//end iff
+          temp->next = node;
+	  node = temp;
+	}
+
+// the operation pop
+
+	void Stack::pop()
+	{
+	  Node *temp;
+	  if(node == NULL)
+	  {
+	    cout << " Stack is empty.";
+	    return;
+	  }//end if
+          temp = node->next;
+	  cout << " you have just poped the name " << temp->data;
+	  delete node;
+	  node = temp;
+        }//end pop
+
+// show the stack
+
+	void Stack::show()
+	{
+	  Node *ptr1=node;
+	  cout << " This stack is ";
+	  while(ptr1 != NULL)
+	  {
+	    cout << ptr1->data << " ";
+	    ptr1 = ptr1->next;
+          }
+	  cout << "NULL" << endl;
+	}//end show
